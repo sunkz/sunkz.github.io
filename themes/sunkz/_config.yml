@@ -21,7 +21,7 @@ highlight:
 nav:
   home: .
   archive: archives
-  about: about
+  # about: about
   # rss: atom.xml
 
 # hexo-renderer-sass
