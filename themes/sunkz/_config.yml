@@ -1,0 +1,50 @@
+# basic
+title: Sunkz
+subtitle: 
+favicon: https://i.loli.net/2019/09/09/WGEuKVPeJp4n5cl.png
+
+# avatar: images/avatar.png
+# banner_small: images/banner-small.png
+# banner_large: images/banner-large.png
+logo: https://i.loli.net/2019/09/09/WGEuKVPeJp4n5cl.png
+
+# disqus
+#disqus_shortname: drakeleung
+
+highlight:
+  enable: true
+  line_number: false
+  auto_detect: false
+  tab_replace:
+
+# nav #
+nav:
+  home: .
+  archive: archives
+  about: about
+  # rss: atom.xml
+
+# hexo-renderer-sass
+node_sass:
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
+
+# Default post title
+default_post_title: Untitled
+
+# social
+social:
+  github: https://github.com/sunkz
+  weibo: http://weibo.com/6606919614
+  mail: mailto:sunkezheng@outlook.com
+  twitter: https://twitter.com/sunkezheng
+
+# widget
+#   title: 标题
+#   content: 内容
+widget:
+  title: Sunkz
+  content: Stay Hungry Stay Foolish
+
+# footer: Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a>
