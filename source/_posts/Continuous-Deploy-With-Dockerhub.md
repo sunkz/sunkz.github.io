@@ -85,7 +85,7 @@ public void hook(){
 docker stop hello
 docker rm hello
 docker pull sunkezheng/hello
-docker run --name http -p8080:8080 -d sunkezheng/hello
+docker run --name hello -p8080:8080 -d sunkezheng/hello
 ```
 
 在server上启动该hook服务
