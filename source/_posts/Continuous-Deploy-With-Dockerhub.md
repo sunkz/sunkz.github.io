@@ -65,7 +65,7 @@ ENTRYPOINT ["java","-jar","target/hello-0.0.1-SNAPSHOT.jar"]
 
 ### hook
 
-编写hook服务,监听 dockerhub hello repository变动
+编写hook服务,当 dockerhub hello imgage 更新时,会触发该hook
 
 ```java
 /**
