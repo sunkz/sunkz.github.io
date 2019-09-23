@@ -69,7 +69,8 @@ ENTRYPOINT ["java","-jar","target/hello-0.0.1-SNAPSHOT.jar"]
 
 ```java
 /**
- * 在server运行上,当Dockerhub中hello repository有变动,将出触发该接口,该接口将会执行auto_deploy脚本
+ * hook在server上运行,当Dockerhub中hello image有变动,
+ * 将触发该接口,该接口将会执行auto_deploy脚本
  */
 @GetMapping("/hook")
 public void hook(){
