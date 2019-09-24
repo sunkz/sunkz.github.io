@@ -103,7 +103,7 @@ dockerhub hello repository添加webhook指向 server中的hook服务
 
 至此整条流水线已经建立
 
-![](https://tva1.sinaimg.cn/large/006y8mN6gy1g77gt03ryqj31j60bimz2.jpg)
+![](https://tva1.sinaimg.cn/large/006y8mN6gy1g77kd13phkj31jk09imzk.jpg)
 
 将hello springboot工程提交到Github hello repository, 触发整条流水线.
 
