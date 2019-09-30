@@ -141,7 +141,7 @@ Node是Pod运行的地方，Kubernetes支持Docker、rkt等容器Runtime。Node�
 3. Kubernetes的系统组件都被放到kube-system namespace中
 4. 还有一个kube-dns组件，它为Cluster提供DNS服务
 
-#### 部署一个https-app
+#### 部署一个httpd-app
 
 ![image.png](https://i.loli.net/2019/09/29/miHg5UpBeEovdD4.png)
 
