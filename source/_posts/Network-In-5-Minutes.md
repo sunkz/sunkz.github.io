@@ -536,7 +536,7 @@ A-B 之间随后通过对称加密进行通信
 Client-Hello   Server-Hello
 ```
 
-### CND
+### CDN
 
 #### RR(Round-Robin)-DNS LoadBalance
 
