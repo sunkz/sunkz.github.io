@@ -3,10 +3,14 @@ author: Sunkz
 tags:
   - Kubernetes
   - devops
+
 photos:
+
   - https://s2.ax1x.com/2019/09/29/uGAg8f.png
+
 categories: []
 date: 2019-07-12 15:26:00
+
 ---
 ### 核心
 

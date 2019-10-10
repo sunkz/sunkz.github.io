@@ -4,10 +4,14 @@ tags:
   - tcp/ip
   - http
   - dns
+
 photos:
+
   - https://s2.ax1x.com/2019/10/09/u4HkM4.png
+
 categories: []
 date: 2018-09-19 12:34:00
+
 ---
 # 基础知识
 
@@ -253,7 +257,7 @@ DNS,SNMP,视频音频,广播通信使用
 #### 三次握手
 
 ```
-三次握手 : 双方互相确定 Seq Num
+三次握手 : 双方互相确定 Seq Num. Seq Num如果是从1开始,则十分容易预测,所以需要随机设定并相互告知.
 ```
 
 ![handshake.png](http://tva1.sinaimg.cn/large/0060lm7Tly1g4ynowksbcj316y0s87fu.jpg)

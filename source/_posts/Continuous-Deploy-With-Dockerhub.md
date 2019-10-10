@@ -4,11 +4,14 @@ tags:
   - docker
   - webhook
   - ci/cd
-  - ''
+
 photos:
+
   - https://tva1.sinaimg.cn/large/006y8mN6gy1g77kd13phkj31jk09imzk.jpg
+
 categories: []
 date: 2019-09-21 18:50:00
+
 ---
 ## 准备工作
 
