@@ -116,7 +116,7 @@ curl 请求测试
 
 ![](https://tva1.sinaimg.cn/large/006y8mN6gy1g77hikuiufj31e403ut9m.jpg)
 
-## 总结与展望
+## 后记
 
 - Github Actions将支持CI/CD到自定的Server
 - 使用Jenkins可以简化Hook部分
