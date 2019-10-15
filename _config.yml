@@ -82,6 +82,10 @@ theme: sunkz
 #  monthly: false
 #  daily: false
 
+# Security
+encrypt:
+    enable: true
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
