@@ -6,7 +6,7 @@ tags:
 
 photos:
 
-  - https://s2.ax1x.com/2019/09/29/uGAg8f.png
+  - https://s2.ax1x.com/2019/11/02/KbcC2n.png
 
 categories: []
 date: 2019-07-12 15:26:00
