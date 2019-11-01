@@ -1,16 +1,12 @@
-title: Shell In 5 Minutes
+title: Shell
 author: Sunkz
 tags:
   - shell
   - linux
-
 photos:
-
-  - https://s2.ax1x.com/2019/11/02/Kb6Knf.png
-
+  - 'https://s2.ax1x.com/2019/11/02/Kb6Knf.png'
 categories: []
 date: 2019-01-22 00:26:00
-
 ---
 ### 变量
 

@@ -1,16 +1,12 @@
-title: Kubernetes In 5 Minutes
+title: Kubernetes
 author: Sunkz
 tags:
   - Kubernetes
   - devops
-
 photos:
-
-  - https://s2.ax1x.com/2019/11/02/KbcC2n.png
-
+  - 'https://s2.ax1x.com/2019/11/02/KbcC2n.png'
 categories: []
 date: 2019-07-12 15:26:00
-
 ---
 ### 核心
 

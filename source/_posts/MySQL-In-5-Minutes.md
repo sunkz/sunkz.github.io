@@ -1,15 +1,11 @@
-title: MySQL In 5 Minutes
+title: MySQL
 author: Sunkz
 tags:
   - mysql
-
 photos:
-
-  - https://s2.ax1x.com/2019/11/02/KbyNwD.png
-
+  - 'https://s2.ax1x.com/2019/11/02/KbyNwD.png'
 categories: []
 date: 2018-12-02 00:24:00
-
 ---
 ## SQL
 
