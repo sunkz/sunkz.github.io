@@ -2,10 +2,14 @@ title: Browser
 author: Sunkz
 tags:
   - browser
+
 photos:
-  - 'http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn2umu44j30o10c90ui.jpg'
+
+  - https://s2.ax1x.com/2019/11/03/KXoMpq.png
+
 categories: []
 date: 2019-10-02 01:58:00
+
 ---
 [developers.google.com - Inside look at modern web browser](https://developers.google.com/web/updates/2018/09/inside-browser-part4)
 
