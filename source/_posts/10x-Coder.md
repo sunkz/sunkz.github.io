@@ -73,6 +73,12 @@ Github项目侧边栏插件
 谷歌上网助手 plugin
 ```
 
+### [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?utm_source=chrome-ntp-icon)
+
+```
+chrome 远离鼠标利器
+```
+
 ### [Speed Up](https://chrome.google.com/webstore/detail/speed-control-html5-video/ihblhcdfebidnflfeinmfcidibiigcoo?utm_source=chrome-ntp-icon)
 
 ```

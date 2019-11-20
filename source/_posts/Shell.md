@@ -3,10 +3,14 @@ author: Sunkz
 tags:
   - shell
   - linux
+
 photos:
+
   - https://s2.ax1x.com/2019/11/20/Mf9zwV.png
+
 categories: []
 date: 2019-01-22 00:26:00
+
 ---
 ### 变量
 

@@ -4,10 +4,14 @@ tags:
   - tcp/ip
   - http
   - dns
+
 photos:
-  - 'https://s2.ax1x.com/2019/10/09/u4HkM4.png'
+
+  - https://s2.ax1x.com/2019/10/09/u4HkM4.png
+
 categories: []
 date: 2018-09-19 12:34:00
+
 ---
 # 基础知识
 

@@ -2,10 +2,14 @@ title: RocketMQ
 author: Sunkz
 tags:
   - rocketmq
+
 photos:
-  - 'https://s2.ax1x.com/2019/10/16/KFNeZF.png'
+
+  - https://s2.ax1x.com/2019/10/16/KFNeZF.png
+
 categories: []
 date: 2019-10-16 17:47:00
+
 ---
 ### 基本概念
 
