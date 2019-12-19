@@ -67,7 +67,7 @@ DST : 夏令时,时间往前拨1h.
 | Unicode 编号       | UTF-8 编码                                                   |
 | ------------------ | ------------------------------------------------------------ |
 | 0x00 - 0x7F        | 0XXXXXXX  (x为这个符号 Unicode 码 , 所以 UTF-8 向下兼容 ASCII) |
-| 0x80 - 0x7FF       | 110XXXXX - 10XXXXXX                                          |
+| 0x80 - 0x7FF       | 110XXXXX 10XXXXXX                                            |
 | 0x800 - 0xFFFF     | 1110XXXX 10XXXXXX 10XXXXXX                                   |
 | 0x10000 - 0x10FFFF | 11110XXX 10XXXXXX 10XXXXXX 10XXXXXX                          |
 
