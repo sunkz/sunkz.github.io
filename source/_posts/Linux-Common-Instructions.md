@@ -101,7 +101,8 @@ systemctl enable docker 自启动
 top 查看系统运行状态
 ps -ef | grep redis 线程  带[]为内核态进程 tty为?的为后台运行
 lsof -i:port 查看端口号
-netstat -nat | grep 8080  查看8080端口线程连接情况
+netstat -tnlp | grep :22 查看端口占用
+netstat -nat | grep 8080  查看8080端口占用
 ssh -o ServerAliveInterval=60 root@106.12.194.111
 ssh -i ~/ssh/open.pem root@106.12.194.111
 scp D:\\Docker\a.txt root@118.25.60.179:/root 上传文件
