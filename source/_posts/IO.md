@@ -1,11 +1,16 @@
 title: IO
 author: Sunkz
 tags:
-  - io
+
+- io
+
 photos:
-  - 'https://s2.ax1x.com/2019/12/30/lQ8KcF.png'
+
+  - https://s2.ax1x.com/2019/12/31/l1KMnA.png
+
 categories: []
 date: 2019-12-30 17:12:00
+
 ---
 阻塞IO
 
