@@ -78,12 +78,12 @@ git remote add origin [.git url] 设置新源地址
 
 ```shell
 # .ssh
-config
-id_rsa
-id_rda.pub
-known_hosts
-sunkz
-sunkz.pub
+-rw-r--r-- 1 sunke 197609  226 11月 28 14:56 config
+-rw-r--r-- 1 sunke 197609 2578  9月  5 16:15 id_rsa
+-rw-r--r-- 1 sunke 197609  554  9月  5 16:15 id_rsa.pub
+-rw-r--r-- 1 sunke 197609 1464 12月 30 14:38 known_hosts
+-rw-r--r-- 1 sunke 197609 2578 11月 28 14:52 sunkz_rsa
+-rw-r--r-- 1 sunke 197609  554 11月 28 14:52 sunkz_rsa.pub
 ```
 
 ```shell
