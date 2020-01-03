@@ -53,10 +53,10 @@ ObjectMonitor(){
 
 ```java
 synchronized (this){ //CurrThread进入_EntryList
-    ...   //_owner = CurrtThread , count++
-    this.notify();//不释放锁 _owner = CurrtThread
+    ...   //_owner=CurrtThread , count++
+    this.notify();//不释放锁 _owner=CurrThread.WaitSet队头Thread进入_cxq或者EntryList.
     this.wait();//将_owner指向NULL,CurrTread进入WaitSet,EntryList中的线程开始TryLock.
-    ...  //将_owner指向NULL,EntryList中的线程开始争抢锁.
+    ...  //将_owner指向NULL,EntryList中的线程开始TryLock.
 }
 ```
 
