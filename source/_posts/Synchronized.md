@@ -37,7 +37,7 @@ ObjectMonitor(){
     _owner=NULL;//临界资源
     _count=0;//同一线程可多次进入 ++
     _cxq=NULL;//所有请求锁的线程首先会被放在这个链表中
-    _EntryList=NULL;//_cxq中有资格成为候选资源的线程会被移动到该List
+    _EntryList=NULL;//_cxq或WaitSet中有资格成为候选资源的线程会被移动到该List
     _WaitSet=NULL;//执行wait()方法后进入此Set
     
     void enter(TRAPS);
@@ -49,7 +49,6 @@ ObjectMonitor(){
 ```
 
 <div align=center><img src="https://cdn.shenlanbao.com/consultants/167428545_0200103143438.png" style="zoom: 40%;" /></div>
-
 ### Synchronized
 
 ```java
