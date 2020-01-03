@@ -28,6 +28,10 @@ date: 2020-01-03 09:59:00
 
 ### ObjectMonitor
 
+```
+JVM对管程的C++实现
+```
+
 ```c++
 ObjectMonitor(){
     _owner=NULL;//临界资源
@@ -45,7 +49,6 @@ ObjectMonitor(){
 ```
 
 <div align=center><img src="https://cdn.shenlanbao.com/consultants/167428545_0200103143438.png" style="zoom: 40%;" /></div>
-
 
 ### Synchronized
 
@@ -86,3 +89,4 @@ JDK1.7之后自旋锁默认开启.自旋次数由JVM控制.(高并发情况下,�
 - 重入锁 : Synchronized(内核态实现 count字段) ReentryLock(用户态实现) 都是重入锁
 
 - 自旋锁 : 线程自旋性能消耗小于线程挂起唤醒性能消耗时使用. (轻量级锁)
+
