@@ -115,9 +115,23 @@ curl 请求测试
 
 ![](https://tva1.sinaimg.cn/large/006y8mN6gy1g77hikuiufj31e403ut9m.jpg)
 
-## 后记
+## 扩展
 
 - Github Actions将支持CI/CD到自定的Server
 - 使用Jenkins可以简化Hook部分
 - 配合Nginx使用可实现 '零停机' 更新
 - 第三方云厂商提供了大量模板式Serverless的DevOps解决方案
+
+```shell
+#! /bin/bash
+
+# 基于Jar包的hook
+
+lsof -i:8080 | grep java | awk '{print $2}' | xargs kill -9
+rm -rf http/
+git clone git@github.com:sunkz/http.git
+cd http
+mvn clean package -DskipTests
+java -jar ./target/http-0.0.1-SNAPSHOT.jar
+```
+
