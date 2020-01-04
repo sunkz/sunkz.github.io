@@ -1,6 +1,7 @@
 title: JVM
 author: Sunkz
 tags:
+
   - jvm
 
 photos:
@@ -13,7 +14,7 @@ date: 2019-12-31 11:42:00
 ---
 ## 整体架构
 
-![jvm.png](http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymxwegnyj31ay0u0td5.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymxwegnyj31ay0u0td5.jpg" alt="jvm.png" style="zoom:40%;" /></div>
 
 ![jmm.png](http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymybolb1j311v0u0wqg.jpg)
 
@@ -82,7 +83,7 @@ date: 2019-12-31 11:42:00
 
     Hash值,GC分代年龄,锁状态标志,线程持有的锁,偏向线程ID,偏向时间戳
 
-    ![Mark Word](http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymys7tlvj30w00gq412.jpg)
+    <div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymys7tlvj30w00gq412.jpg" alt="Mark Word" style="zoom:50%;" /></div>
 
   - 类型指针 : JVM通过该指针确定这个对象是哪个类的实例
 
@@ -109,7 +110,7 @@ reference类型的两种访问方式
   
   - 栈空间的指针直接指向堆中的对象.好处,直接定位,性能非常高(HotSpot采用此方式)
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymz44v82j31140e4ju3.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymz44v82j31140e4ju3.jpg" style="zoom: 40%;" /></div>
 
 ## 垃圾回收
 
@@ -130,7 +131,7 @@ reference类型的两种访问方式
 
   - 可以作为GC Roots 的对象 : 栈帧中的局部变量表,方法区类属性所引用的对象,方法区中常量所引用的对象.本地方法栈中引用的对象.以上这些可以作为GC Roots 的对象向下(堆)查找,找不到的对象,都可作为垃圾.
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymzhfpewj31140gw76c.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymzhfpewj31140gw76c.jpg" style="zoom:33%;" /></div>
 
 ### 如何回收
 
@@ -140,7 +141,7 @@ reference类型的两种访问方式
 
   缺点 : 堆中会出现很多不连续的空间小区域, 新的大对象将没办法分配空间.如果JVM找不到可用分配区,将再次触发垃圾回收
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymzu3jijj312e0ikdh3.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymzu3jijj312e0ikdh3.jpg" style="zoom:33%;" /></div>
 
 - 复制算法
   - 堆 : 新生代 ,老年代   缺点 :  新生代区域只能利用50%空间
@@ -148,12 +149,12 @@ reference类型的两种访问方式
     - 新对象存放在 Eden, GC 之后将 存活的对象移到 Survivor1. 再次新对象扔到Eden,GC之后,Eden和Survivor1中存活的对象都移到Survivor2.这样将有80%空间得到利用.
   - 分配担保 : 如果另一块Survivor空间没有足够空间存放上一次新生代收集下来的存货对象时,这些对象将直接通过分配担保机制进入老年代(方法区).
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn06rhk3j312e0ikt9x.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn06rhk3j312e0ikt9x.jpg" style="zoom:33%;" /></div>
 
 - 标记整理 : 针对老年代, **老年代不适合复制算法,因为每次都有大量存活,复制效率低**
   - 标记清除之后再整理
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn0iywxlj31ag0ly0u3.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn0iywxlj31ag0ly0u3.jpg" style="zoom:33%;" /></div>
 
 - 分代收集
 
@@ -217,11 +218,11 @@ reference类型的两种访问方式
 
 - Serial  : 复制算法,单线程,进行垃圾收集时,必须暂停所有工作线程.(Young+Old)
 
-![image-20190908153217262](https://tva1.sinaimg.cn/large/006y8mN6gy1g6s59ahb9kj315i09y0ub.jpg)
+<div align=center><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g6s59ahb9kj315i09y0ub.jpg" alt="image-20190908153217262" style="zoom: 40%;" /></div>
 
 - ParNew  :  复制算法,多线程收集(Young+Old)
 
-![image-20190908153342556](https://tva1.sinaimg.cn/large/006y8mN6gy1g6s5apy0x6j315e0am408.jpg)
+<div align=center><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g6s5apy0x6j315e0am408.jpg" alt="image-20190908153342556" style="zoom:40%;" /></div>
 
 - CMS Concurrent Mark Swap  并发标记清除  (老年代)
 
@@ -237,7 +238,7 @@ reference类型的两种访问方式
     最耗时的并发标记和并发清除过程,收集器线程和用户线程可以一起工作,所以性能极高
     ```
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn0zqlc7j313809kjsw.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn0zqlc7j313809kjsw.jpg" style="zoom:40%;" /></div>
 
 - G1
   - 利用多CPU多核环境减少Stop-The-World时间,基于标记整理,可预测停顿时间
@@ -246,13 +247,13 @@ reference类型的两种访问方式
   - 最终标记 : 修正并发标记.
   - 筛选回收 : 对各个Region的回收价值和成本进行排序,根据用户所期望的GC停顿时间制定回收计划.
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn1d0sptj312s07uabq.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4yn1d0sptj312s07uabq.jpg" style="zoom:40%;" /></div>
 
 ```
 Hotspot 虚拟机包含所有收集器
 ```
 
-![lAm1iT.png](https://s2.ax1x.com/2019/12/26/lAm1iT.png)
+<div align=center><img src="https://s2.ax1x.com/2019/12/26/lAm1iT.png" alt="lAm1iT.png" style="zoom:40%;" /></div>
 
 - ZGC : JDK11
 
@@ -316,9 +317,9 @@ Hotspot 虚拟机包含所有收集器
 
 ### 双亲委派模型
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4zoa7vfggj312r0u0jw0.jpg)
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4zoa7vfggj312r0u0jw0.jpg" style="zoom:40%;" /></div>
 
-![](http://tva1.sinaimg.cn/large/0060lm7Tly1g4zo9g1w9dj31tk0igjvx.jpg)
+<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4zo9g1w9dj31tk0igjvx.jpg"  />
 
 ```
 自底向上询问是否加载,自顶向下尝试加载 : 防止核心类被自定义类加载.
@@ -329,9 +330,17 @@ Hotspot 虚拟机包含所有收集器
 显示加载 : loadClass, forName 
 ```
 
+```
+双亲委托机制是为了保证一个 Java 类在 JVM 中是唯一的，假如你不小心写了一个与 JRE 核心类同名的类，比如 Object 类，双亲委托机制能保证加载的是 JRE 里的那个 Object 类，而不是你写的 Object 类。这是因为 AppClassLoader 在加载你的 Object 类时，会委托给 ExtClassLoader 去加载，而 ExtClassLoader 又会委托给 BootstrapClassLoader，BootstrapClassLoader 发现自己已经加载过了 Object 类，会直接返回，不会去加载你写的 Object 类。
+```
+
+```
+自定义类加载器需要继承 ClassLoader 抽象类，再重写 findClass 和 loadClass 方法即可，如果你要打破双亲委托机制，就需要重写 loadClass 方法，因为 loadClass 的默认实现就是双亲委托机制。
+```
+
 ## 运行时栈帧结构
 
-<img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4zos1i0xrj30ra0q2dli.jpg" style="zoom:80%;" />
+<div align=center><img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4zos1i0xrj30ra0q2dli.jpg" style="zoom:50%;" /></div>
 
 ## 扩展
 
