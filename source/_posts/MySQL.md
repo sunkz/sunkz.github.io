@@ -260,6 +260,8 @@ slow_query_log  -->  explain  -->  show profile  --> optimise
 ![](http://ww2.sinaimg.cn/large/006tNc79gy1g62yd1knyzj30io08vtby.jpg)
 
 ```txt
+Why not BST?  数据集特殊时,有可能退化为链表,树高不稳定.
+Why not AVL?  为了维持绝对平衡需要大量旋转
 Why not RBT？  RBT出度为2，树太高
 Why not B Tree？ B Tree不利于区间搜索,需要回溯
 Why not hash？  只能= 不能 < > in, 不能组合索引
