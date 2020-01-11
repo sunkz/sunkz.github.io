@@ -49,6 +49,8 @@ ObjectMonitor(){
 ```
 
 <div align=center><img src="https://cdn.shenlanbao.com/consultants/167428545_0200103143438.png" style="zoom: 40%;" /></div>
+
+
 ### Synchronized
 
 ```java
@@ -81,6 +83,8 @@ synchronized (this){ //CurrThread进入_EntryList
 ```
 开启偏向锁  -XX:+UseBiasedLocking   jdk6时增加偏向锁和轻量级锁,jdk5之前Synchronized一直为重量级锁
 无竞争时,消除同步操作. 再次存在竞争,则偏向锁取消. 并发较小时,开启偏向锁将大大降低,锁的竞争时间.
+
+线程再次请求锁时,只需检查对象投中的线程ID标记位,就知道当前线程是否拥有该对象的锁,而无需进入到Monitor中检查_owner=线程ID.
 
 JDK1.7之后自旋锁默认开启.自旋次数由JVM控制.(高并发情况下,自旋非常消耗CPU资源)
 ```
