@@ -9,7 +9,7 @@ tags:
 
 photos:
 
-- https://s2.ax1x.com/2020/01/03/laMmn0.png
+- https://s2.ax1x.com/2020/02/10/15sNwT.png
 
 categories: []
 date: 2020-01-03 09:59:00
@@ -49,7 +49,6 @@ ObjectMonitor(){
 ```
 
 <div align=center><img src="https://cdn.shenlanbao.com/consultants/167428545_0200103143438.png" style="zoom: 40%;" /></div>
-
 
 ### Synchronized
 
