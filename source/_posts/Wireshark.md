@@ -71,3 +71,10 @@ date: 2020-03-10 16:08:00
 ##### 四次挥手
 
 ![](https://cdn.shenlanbao.com/consultants/306147674_搜狗截图20200310160409.png)
+
+# HTTP & HTTPS
+
+- 发送方用接收方的公钥加密data发送给接收方
+
+- 接收方接收发送方已加密的data并用自己的私钥解密
+- Client 和 Server 互为发送方和接收方
