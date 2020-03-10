@@ -20,8 +20,6 @@ date: 2020-03-10 16:08:00
 
 ### Wireshark抓包记录
 
-##### 过滤IP
-
 ##### 三次握手
 
 ![](https://cdn.shenlanbao.com/consultants/1611089354_搜狗截图20200310144449.png)
