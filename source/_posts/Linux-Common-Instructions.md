@@ -104,7 +104,7 @@ lsof -i:port 查看端口号
 netstat -tnlp | grep :22 查看端口占用
 netstat -nat | grep 8080  查看8080端口占用
 ssh -o ServerAliveInterval=60 root@106.12.194.111
-ssh -i ~/ssh/open.pem root@106.12.194.111
+ssh  ./slb-devops.pem root@120.77.170.116
 scp D:\\Docker\a.txt root@118.25.60.179:/root 上传文件
 scp  -i  ./slb-devops.pem root@120.77.170.116:/root/wiki.log  ./wiki.log 用私钥下载文件
 
