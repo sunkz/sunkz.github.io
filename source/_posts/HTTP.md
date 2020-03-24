@@ -52,6 +52,12 @@ ajax跨域时Server的response header中若没有 Access-Control-Allow-Origin:"�
 预请求RequestMethod OPTIONS,服务端设置允许的Access-Control-Allow-Headers:"token" 和 Access-Control-Allow-Methods:"DELETE,PUT"
 ```
 
+#### 虚拟主机
+
+```
+Header中Host字段,用以支持虚拟主机技术,默认为值url
+```
+
 #### 缓存
 
 **Cache-Control**
