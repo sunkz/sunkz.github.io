@@ -47,7 +47,6 @@ git reset --soft hash 上次修改内容将会保留
 
 ```
 git rebase -i hash  修改hash之后的几次commit 不包含hash 
-git merge skz 合并skz到master
 ```
 
 ```
