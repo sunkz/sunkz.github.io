@@ -234,11 +234,9 @@ UserService{
 
 ### 事务隔离机制的实现
 
-- MVCC :  将一个值从1改成2,3,4过程生成的undo log.不同的时刻启动的事务会关联上不同的read-view.
+- 可重复读隔离级别实现机制:  将一个值从1改成2,3,4过程生成的undo log.不同的时刻启动的事务会关联上不同的read-view.事务T启动时候关联上了额read-view A,即使其它事务改变了1的值.事务T始终读取到的是read-view的值.
 
 <img src="https://s1.ax1x.com/2020/04/21/J8qkKU.png" alt="J8qkKU.png" style="zoom: 50%;" />
-
-<center>可重复读实现机制</center>
 
 ### 锁机制
 
