@@ -1,6 +1,7 @@
-title: MySQL
+WAL(write ahead logging) :当一条记录需要更新时,先把记录写到redo log,并更新内存,这个时候就算更新完成.等到合适(系统空闲)的时,在把值刷到内存.title: MySQL
 author: Sunkz
 tags:
+
   - mysql
 
 photos:
@@ -19,7 +20,13 @@ date: 2018-12-02 00:24:00
 SQL --> Cache --> parse -> pre --> optimization --> execute plan
 ```
 
-![img](http://ww1.sinaimg.cn/large/006tNc79gy1g5k5izypjmj31400u0tpc.jpg)
+### 查询流程
+
+<img src="http://ww1.sinaimg.cn/large/006tNc79gy1g5k5izypjmj31400u0tpc.jpg" alt="img" style="zoom: 33%;" />
+
+### 更新流程
+
+<img src="https://s1.ax1x.com/2020/04/21/J8T8tx.png" alt="J8T8tx.png" style="zoom: 33%;" />
 
 ### 特殊处理
 
@@ -115,6 +122,17 @@ price : POJO BigDecimal  db decimal
 MyISAM  表锁
 InnoDB  行+表锁，事务，外键	支持事务
 ```
+### 日志系统
+
+- redo log : InnoDB(存储层)特有的日志,循环写.
+
+  ```
+  WAL(write ahead logging) :当一条记录需要更新时,先把记录写到redo log,并更新内存,这个时候就算更新完成.等到合适(系统空闲)的时,在把值刷到内存.
+  ```
+
+- binlog : server层日志, 所有存储引擎都可使用.
+
+- undo log : 用于事务回滚, MVCC.
 
 ### 事务机制
 
@@ -157,7 +175,7 @@ UserService{
 @Transactional(propagation = Propagation.REQUIRED_NEW)
 ```
 
-### 事务带来的问题
+### 事务隔离级别带来的问题
 
 - 更新丢失(Lost Update)
 
@@ -213,6 +231,14 @@ UserService{
   ```
 
 ![image-20190818210431770](http://ww3.sinaimg.cn/large/006tNc79gy1g644uhi6x6j31r40ogka1.jpg)
+
+### 事务隔离机制的实现
+
+- MVCC :  将一个值从1改成2,3,4过程生成的undo log.不同的时刻启动的事务会关联上不同的read-view.
+
+<img src="https://s1.ax1x.com/2020/04/21/J8qkKU.png" alt="J8qkKU.png" style="zoom: 50%;" />
+
+<center>可重复读实现机制</center>
 
 ### 锁机制
 

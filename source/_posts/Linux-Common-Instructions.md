@@ -157,7 +157,7 @@ top 动态显示进程信息. 3秒刷新
 
 ------
 
-lsof -i:8080 | grep java | awk 'print{$2}' | xargs kill -9 
+lsof -i:8080 | grep java | awk '{ print $2 }' | xargs kill -9 
 
 ------
 
