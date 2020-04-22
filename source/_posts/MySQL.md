@@ -1,4 +1,4 @@
-WAL(write ahead logging) :当一条记录需要更新时,先把记录写到redo log,并更新内存,这个时候就算更新完成.等到合适(系统空闲)的时,在把值刷到内存.title: MySQL
+title: MySQL
 author: Sunkz
 tags:
 
