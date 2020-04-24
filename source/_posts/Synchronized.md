@@ -65,16 +65,23 @@ synchronized (this){ //CurrThread进入_EntryList
 线程执行到带synchronized会自动的在该方法前后添加monitorenter和monitorexit指令(monitor指令的隐式调用).ObjectMonitor中的成员方法对临界资源操作时,涉及到用户态和内核态的切换,造成Synchronized同步效率低下,在JDK1.6只后,在JVM层面对其做了优化.
 ```
 
-### Synchronized Optimization
+### optimization
 
-#### Mark Word
+- 对象头
+
+```
+在JDK6中，对象实例在堆内存中被分为了三个部分：对象头、实例数据和对齐填充。
+其中 Java 对象头由 Mark Word、指向类的指针以及数组长度三部分组成。
+```
+
+- Mark Word
 
 <img src="http://tva1.sinaimg.cn/large/0060lm7Tly1g4ymys7tlvj30w00gq412.jpg" style="zoom:50%;" />
 
-#### 锁升级
+- 锁升级
 
 ```
-无锁 偏向锁 轻量级锁 重量级锁
+无锁 偏向锁 轻量级锁(自旋) 重量级锁
 ```
 
 ![](https://cdn.shenlanbao.com/consultants/479139810_p2368988626.jpg)
@@ -89,6 +96,27 @@ JDK1.7之后自旋锁默认开启.自旋次数由JVM控制.(高并发情况下,�
 ```
 
 - 重入锁 : Synchronized(内核态实现 count字段) ReentryLock(用户态实现) 都是重入锁
-
 - 自旋锁 : 线程自旋性能消耗小于线程挂起唤醒性能消耗时使用. (轻量级锁)
+- 重量级锁 : 获取和释放锁需要用户态和内核态切换.
+
+### Lock
+
+```
+Synchronized 1.5 操作系统实现,重量级锁,获取和释放锁需要内核态和用户态切换.
+Lock 1.5  基于Java实现, 底层AQS的CLH队列,获取释放state都是通过cas
+```
+
+```
+低并发情况Synchronized 1.6锁优化时候性能与Lock相近.锁升级到重量级锁时,性能下降
+```
+
+```
+Lock可重入,可指定公平非公平,等待可中断(设置等待获取锁的超时时间).Synchronized等待不可中断.
+```
+
+<img src="https://s1.ax1x.com/2020/04/24/JDK7y8.jpg" alt="JDK7y8.jpg" style="zoom: 80%;" />
+
+```
+Synchronized和Lock都是悲观锁(虽然底层的CLH是cas操作), 因为都需要先获得锁(隐式或显示), 才能访问共享变量.
+```
 
