@@ -110,9 +110,11 @@ Lock 1.5  基于Java实现, 底层AQS的CLH队列,获取释放state都是通过c
 低并发情况Synchronized 1.6锁优化时候性能与Lock相近.锁升级到重量级锁时,性能下降
 ```
 
-```
-Lock可重入,可指定公平非公平,等待可中断(设置等待获取锁的超时时间).Synchronized等待不可中断.
-```
+- lock(),阻塞获取锁.
+- locklnterruptibly(),获取锁的过程中可中断,可以避免一直阻塞,可以避免死锁.
+- tryLock(),非阻塞获取锁.获取失败不会阻塞,直接返回,可避免死锁.
+- tryLock(long time, TimeUnit unit),一段时间内获取不到就释放锁,可以避免死锁.
+- newCondition(),返回一个Condition实例绑定到这个锁实例 
 
 <img src="https://s1.ax1x.com/2020/04/24/JDK7y8.jpg" alt="JDK7y8.jpg" style="zoom: 80%;" />
 
