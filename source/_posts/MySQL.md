@@ -240,29 +240,21 @@ UserService{
 
 ### 锁机制
 
-```sql
-show open tables --查看表是否加锁
-lock(unlock) table read(write) -- 给表加读或者写锁. 读锁:共享读,写锁:排他写
-```
+行锁 表锁 页锁
 
-- 表锁
-  - 读阻塞写 : 当session_1对table_a加了读锁,在session_1释放读锁之前,session_1不能对table_a执行写操作, 也不能对其他table读写操作,其他session对table_a的写操作将处于阻塞状态.
-  - 写阻塞读 : 当session_1对table_a加了写锁,在session_1释放写锁之前,session_1不能读写其他table,其他session不能对table_a读写.
+- 共享锁(读锁) : 若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改。
 
-```
-MyISAM : 在执行Select前自动给涉及到的表加读锁,在执行写操作时,自动给涉及到的表加写锁,
-```
+  ```sql
+  select … lock in share mode;
+  ```
 
-- 行锁
-  
-  - 索引失效导致行锁变表锁
-  
-  - 间隙锁 : 范围查询时,会锁住在该范围的所有索引项,即使该值并不存在.
-  
-    ```sql
-    update table_a set col_b='hahha' where id>4 -- session_1将会锁住所有id>4的值
-    insert into table_a values(1,'hehe') -- 此时session_2将被阻塞
-    ```
+- 排它锁(写锁) : 若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁，直到T释放A上的锁。这保证了其他事务在T释放A上的锁之前不能再读取和修改A。
+
+  ```sql
+  select ... for update
+  ```
+
+> InnoDB中行锁是作用在索引列,没有索引的列依旧是表锁
 
 ### 主从同步
 
