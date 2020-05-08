@@ -124,13 +124,14 @@ InnoDB  行+表锁，事务，外键	支持事务
 ```
 ### 日志系统
 
-- redo log : InnoDB(存储层)特有的日志,循环写.
+- redo log(重做日志) : InnoDB(存储层)特有的日志,循环写.
 
   ```
   WAL(write ahead logging) :当一条记录需要更新时,先把记录写到redo log,并更新内存,这个时候就算更新完成.等到合适(系统空闲)的时,在把值刷到内存.
+  crash-safe : redo log 保证了InnoDB具有这个能力.它记录了每一条操作日志.
   ```
 
-- binlog : server层日志, 所有存储引擎都可使用.
+- binlog(归档日志) : server层日志, 所有存储引擎都可使用.只归档,不具有crash-safe能力.
 
 - undo log : 用于事务回滚, MVCC.
 
@@ -175,7 +176,7 @@ UserService{
 @Transactional(propagation = Propagation.REQUIRED_NEW)
 ```
 
-### 事务隔离级别带来的问题
+### 事务并发可能带来的问题
 
 - 更新丢失(Lost Update)
 
@@ -222,6 +223,7 @@ UserService{
 
   ```
   在当前事务中读取不到其他事务修改的值,当前事务的值只受当前事务的影响.
+  通过MVCC解决不可重复读, 通过间隙锁解决幻读.
   ```
 
 - 可序列化(Serializable) 
@@ -255,6 +257,8 @@ UserService{
   ```
 
 > InnoDB中行锁是作用在索引列,没有索引的列依旧是表锁
+
+- 间隙锁 : RR级别下加上间隙锁防止幻读.
 
 ### 主从同步
 
