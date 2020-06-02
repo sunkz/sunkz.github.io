@@ -111,9 +111,17 @@ Lock 1.5  基于Java实现, 底层AQS的CLH队列,获取释放state都是通过c
 ```
 
 - lock(),阻塞获取锁.
+
 - locklnterruptibly(),获取锁的过程中可中断,可以避免一直阻塞,可以避免死锁.
+
+  > 获得锁立即返回,如果没有获取锁,当前线程处于休眠状态,直到获得锁或者当前线程可以被别的线程中断去做其他的事情;但是如果是synchronized的话,如果没有获取到锁,则会一直等待下去;
+
 - tryLock(),非阻塞获取锁.获取失败不会阻塞,直接返回,可避免死锁.
-- tryLock(long time, TimeUnit unit),一段时间内获取不到就释放锁,可以避免死锁.
+
+- tryLock(long time, TimeUnit unit)
+
+  > 如果获取了锁立即返回true,如果别的线程正持有锁,会等待参数给的时间,在等待的过程中,如果获取锁,则返回true,如果等待超时,返回false;
+
 - newCondition(),返回一个Condition实例绑定到这个锁实例 
 
 <img src="https://s1.ax1x.com/2020/04/24/JDK7y8.jpg" alt="JDK7y8.jpg" style="zoom: 80%;" />
