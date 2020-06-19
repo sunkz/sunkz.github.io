@@ -20,13 +20,25 @@ date: 2020-04-02 19:38:00
 ##### 连接器(Connector) 
 
 - 监听网络端口
+
 - 接收网络连接(同步/异步 阻塞/非阻塞IO)请求
+
+  > 处理连接的时候可以做到非阻塞,但是真正处理请求执行业务时还是同步阻塞. (当然处理业务也可以利用Java非阻塞或异步).
+  >
+  > Node.js Netty则是在框架层面直接做到连接和处理业务整个过程的非阻塞.
+
 - 读取请求字节流
+
 - 根据具体的应用层协议(HTTP/HTTPS/AJP)解析字节流,生成统一的Tomcat Request对象
+
 - 将Tomcat Request对象转成标准的ServletRequest
+
 - 调用Servlet容器,得到ServletResponse
+
 - 将ServletResponse转换成TomcatResponse对象
+
 - 将Tomcat Response转成网络字节流
+
 - 将响应流写回浏览器
 
 <img src="https://s1.ax1x.com/2020/04/01/G3XEgs.png" alt="G3XEgs.png" style="zoom:50%;" />
