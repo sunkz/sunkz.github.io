@@ -27,7 +27,9 @@ date: 2020-04-02 19:38:00
   >
   > Node.js Netty则是在框架层面直接做到连接和处理业务整个过程的非阻塞???
   >
-  > Node.js 只有一个主线程,一个事件循环,没办法利用CPU多核.Vert.x可以利用多线程,多事件循环??? Spring WebFlux..???
+  > Node.js 只有一个主线程,一个事件循环,没办法利用CPU多核.Vert.x可以利用多线程,多事件循环 --> SpringWebFlux ???
+  >
+  > Spring WebFlux is a non-blocking web framework built from the ground up to take advantage of multi-core, next-generation processors and handle massive numbers of concurrent connections. Reactive and non-blocking generally do not make applications run faster.
 
 - 读取请求字节流
 
