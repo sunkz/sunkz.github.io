@@ -73,3 +73,8 @@ jdk nio2(异步IO)
 Windows的IOCP和Linux(内核2.6之后)的AIO的封装.
 ```
 
+------
+
+IO密集型 : 非阻塞IO模型框架来处理, 可大大提高处理连接数.  如 用Nginx做网关.
+
+CPU密集型 : 阻塞IO模型的框架即可. SpringMVC处理业务逻辑服务.
