@@ -33,7 +33,7 @@ date: 2020-07-08 19:47:00
 
 - 用户使用公钥对 password 进行加密, 发送到服务器
 
-  ![image-20200709172506634](/Users/sunkz/Library/Application Support/typora-user-images/image-20200709172506634.png)
+  ![UnMw11.png](https://s1.ax1x.com/2020/07/09/UnMw11.png)
 
   > 使用公钥对 password 加密 : 防止 password 在网络传输中被截获
 
