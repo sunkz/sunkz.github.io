@@ -1,6 +1,7 @@
 title: Git
 author: Sunkz
 tags:
+
   - git
 
 photos:
@@ -24,7 +25,7 @@ git commit —amend 修改上次提交的message
 ```
 
 ```
-git branch --track skz origin/skz 将本地skz与远程skz建立追踪关系
+git branch --set-upstream-to=origin/remote_branch  local_branch 建立关系
 git branch skz v1.0 根据tag建立分支
 git branch skz origin/skz  创建分支
 git branch -d skz 删除本地skz分支
