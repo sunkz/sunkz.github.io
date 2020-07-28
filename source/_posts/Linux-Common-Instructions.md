@@ -173,7 +173,9 @@ cat 适合小文件
 less 支持上下键,pageDown pageUp键  
        :/skz 可以高亮当前屏中所有skz     n跳转下一个高亮 , N跳转上一个高亮  q退出
 head -n 20  ./hello.txt  查看前20行
-tail 查看文末尾
+tail -f -n 2  a.txt  循环监视文件 a.txt 最后两行内容
+echo sunkz > a.txt 全覆盖
+echo sukz >> a.txt 追加文本
 
 ------
 
