@@ -21,7 +21,7 @@ git pull origin wxy:skz  将远程wxy分支取回  并于本地skz分支合并
 ```
 git rm fileName  从工作去删除  再执行git commit  不会提示   区别于rm fileName
 git rm --cached fileName  从缓存区删除
-git commit —amend 修改上次提交的message
+git commit --amend 修改上次提交的message
 ```
 
 ```
