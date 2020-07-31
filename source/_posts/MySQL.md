@@ -72,47 +72,29 @@ END;
 DROP TRIGGER customer_phone_to_family_member_self 
 ```
 
-### 数据库设计
+### 字段类型
 
+```
 utf8mb4(emoji)    utf8mb4_unicode_ci(慢,准)  utf8mb4_general_ci(快,不准)
+```
 
-------
-
+```
 UUID(存储空间大,查询性能低)  自增ID(空间小,性能快)   自增ID+步长(也可应用于分分布式)
-
 单实例—>自增ID    20节点—>UUID   20-200节点—>自增ID+步长   200+节点—>开源分布式ID解决方案
+```
 
-------
-
-外键--增强数据一致性,但影响性能(数据库需要维护外键约束)
-
-------
+```
+创建时间 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+修改时间 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 DATA+TIME = DATATIME ≈ TIMESTAMP(1970-2038)
+DATETIME 存储与读取显示一致, 存储时需要增加额外 time_zone 字段标明时区
+TIMESTAMP 存储时把时间转换为UTC存储, 查看出来的时间将转成本机时区
+```
 
-TIMESTAMP 存储时间是UTC , 查看出来的时间将转成本机时区
-
-TIMESTAMP时间显示错粗考虑MYSQL实例所在的docker容器的时区是否设置正常
-
-------
-
-price : POJO BigDecimal  db decimal
-
-------
-
-创建时间 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-修改时间 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
-------
-
-逻辑删除---每次查询都要where and deleted=1
-
-物理删除+转移表(删除的数据移到另一张表,触发器实现)——性能也有损耗,还会重建索引(保持树的平衡)
-
-------
-
-逻辑外键适合加索引
+```
+Price : POJO BigDecimal  DB decimal
+```
 
 ## MySQL
 
@@ -405,5 +387,6 @@ B+ Tree : 本质多路平衡查找树+叶节点链表
 [ProcessOn MySQL高级](https://www.processon.com/view/5a3efcb3e4b0bf89b85681d0#map)
 
 [ProcessOn MySQL高级](https://www.processon.com/view/5d41bbb1e4b0d11c89182772#map)
+
 
 
