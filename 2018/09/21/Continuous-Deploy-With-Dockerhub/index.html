@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="Sunkz">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Continuous Deploy With Dockerhub">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Sunkz">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>Continuous Deploy With Dockerhub - Sunkz</title>
+
+
+  <link rel="shortcut icon" href="https://s2.ax1x.com/2019/09/23/uPV4Bt.jpg">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://s2.ax1x.com/2019/09/23/uPV5HP.png" alt="Sunkz" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            Continuous Deploy With Dockerhub
+            
+          </h1>
+          <p class="posted-on">
+          2018-09-21
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/docker/" rel="tag">
+                  docker
+                </a>
+              
+                <a href="/tags/webhook/" rel="tag">
+                  webhook
+                </a>
+              
+                <a href="/tags/ci/cd/" rel="tag">
+                  ci/cd
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h2><span id="准备工作">准备工作</span></h2><ul>
+<li>Github</li>
+<li>Dockerhub</li>
+<li>Server (没有服务器的话,本机使用内网穿透也可以)</li>
+</ul>
+<h2><span id="整体流程">整体流程</span></h2><p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77kd13phkj31jk09imzk.jpg" alt></p>
+<h2><span id="具体步骤">具体步骤</span></h2><h3><span id="code">code</span></h3><p>创建springboot工程提供一个接口, 并编写 dockerfile</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * hello 接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line"> <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">11</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /workspace/app</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> mvnw .</span><br><span class="line"><span class="keyword">COPY</span> .mvn .mvn</span><br><span class="line"><span class="keyword">COPY</span> pom.xml .</span><br><span class="line"><span class="keyword">COPY</span> src src</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> ./mvnw package -DskipTests</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENTRYPOINT</span> ["java","-jar","target/hello-0.0.1-SNAPSHOT.jar"]</span><br></pre></td></tr></table></figure>
+
+<h3><span id="github">Github</span></h3><p>创建hello repository</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77g4or0skj311w05saap.jpg" alt></p>
+<h3><span id="dockerhub">Dockerhub</span></h3><p>创建hello repository并关联上Github的hello repository</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77g0bc9e7j31dk0u00vq.jpg" alt style="zoom:50%;">
+
+<h3><span id="hook">hook</span></h3><p>编写hook服务,当 dockerhub hello image 更新时,会触发该hook</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * hook在server上运行,当Dockerhub中hello image有变动,</span></span><br><span class="line"><span class="comment"> * 将触发该接口,该接口将会执行auto_deploy脚本</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/hook"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hook</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Runtime.getRuntime().exec(<span class="string">"/root/code/auto_deploy.sh"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 销毁旧的容器,从dockerhub拉取最新hello images并启动</span></span><br><span class="line"></span><br><span class="line">docker stop hello</span><br><span class="line">docker rm hello</span><br><span class="line">docker pull sunkezheng/hello</span><br><span class="line">docker run --name hello -p8080:8080 -d sunkezheng/hello</span><br></pre></td></tr></table></figure>
+
+<p>在server上启动该hook服务</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77gm722goj317s02o0us.jpg" alt></p>
+<h3><span id="webhook">webhook</span></h3><p>dockerhub hello repository添加webhook指向 server中的hook服务</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77gqaej82j319e0ms41h.jpg" style="zoom:67%;">
+
+<h2><span id="触发流水线">触发流水线</span></h2><p>至此整条流水线已经建立</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77kd13phkj31jk09imzk.jpg" alt></p>
+<p>将hello springboot工程提交到Github hello repository, 触发整条流水线.</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77h4x3ebnj31mu0i6gos.jpg" alt></p>
+<p>curl 请求测试</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g77hikuiufj31e403ut9m.jpg" style="zoom: 33%;">
+
+<h2><span id="扩展">扩展</span></h2><ul>
+<li>Github Actions将支持CI/CD到自定的Server</li>
+<li>使用Jenkins可以简化Hook部分</li>
+<li>配合Nginx使用可实现 ‘零停机’ 更新</li>
+<li>第三方云厂商提供了大量模板式Serverless的DevOps解决方案</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 基于Jar包的hook</span></span><br><span class="line"></span><br><span class="line">lsof -i:8080 | grep java | awk '&#123;print $2&#125;' | xargs kill -9</span><br><span class="line">rm -rf http/</span><br><span class="line">git clone git@github.com:sunkz/http.git</span><br><span class="line">cd http</span><br><span class="line">mvn clean package -DskipTests</span><br><span class="line">java -jar ./target/http-0.0.1-SNAPSHOT.jar</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/03/29/Authentication/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> Older Posts</a>
+        </div>
+      
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">Sunkz</h1>
+        <div class="custom-widget-content">
+          
+          Stay Hungry Stay Foolish
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">Contact</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/sunkz" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/6606919614" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:sunkezheng@outlook.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/sunkezheng" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">Search</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Sunkz &copy; 2021</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
